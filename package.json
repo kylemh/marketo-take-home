@@ -4,9 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "run": "node index.js",
     "precise-commits": "precise-commits",
     "precommit": "npm run precise-commits",
+    "start": "node index.js",
     "test": "jest"
   },
   "repository": {

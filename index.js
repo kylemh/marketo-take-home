@@ -1,19 +1,7 @@
-const fs = require('fs');
-const { leads } = require('./leads.json');
-const { orderBy, pullAt } = require('lodash');
-
-function getBestLead(leads) {
-  if (leads.length <= 0) {
-    throw new Error('must pass an array of leads to this function');
-  }
-
-  // Choose lead with most recent entry date and - if needed - lowest index
-  const sortedLeads = orderBy(leads, ({ entryDate }) => new Date(entryDate).getTime(), 'desc');
-
-  console.log('sorted leads', sortedLeads);
-
-  return sortedLeads[0];
-}
+import fs from 'fs';
+import pullAt from 'lodash/pullAll';
+import { leads } from './inputs/leads.json';
+import { getBestLead } from './utils';
 
 // Want to keep track of initial entry order for entryDate tie breakers and for a unique ID to compare leads against
 const leadsWithIndexAsProperty = leads.map((lead, index) => {
@@ -126,4 +114,4 @@ console.log('Unique Leads:\n', finalLeads, '\n\n');
 
 const jsonDedupedLeads = JSON.stringify({ leads: finalLeads }, null, 2).concat('\n');
 
-fs.writeFileSync('deduped_leads.json', jsonDedupedLeads);
+fs.writeFileSync(`./outputs/deduped_leads.json`, jsonDedupedLeads);

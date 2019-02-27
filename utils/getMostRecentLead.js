@@ -1,13 +1,13 @@
 import orderBy from 'lodash/orderBy';
 
 /**
- * @function getBestLead
+ * @function getMostRecentLead
  * @throws when not passed an array
  *
  * @param {[Object.<string, any>]} leads
  * @returns {Object.<string, any>} the most recent, highest-indexed lead
  */
-function getBestLead(leads) {
+function getMostRecentLead(leads) {
   try {
     if (leads.length <= 0) {
       throw 'Must pass an array of leads to this function';
@@ -26,4 +26,4 @@ function getBestLead(leads) {
   }
 }
 
-export default getBestLead;
+export default getMostRecentLead;

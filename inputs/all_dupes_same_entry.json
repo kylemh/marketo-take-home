@@ -1,0 +1,36 @@
+{
+  "leads": [
+    {
+      "_id": "jkj238238jdsnfsj23",
+      "email": "foo@bar.com",
+      "firstName": "John",
+      "lastName": "Apple",
+      "address": "123 Place",
+      "entryDate": "2014-05-07T17:30:20+00:00"
+    },
+    {
+      "_id": "jkj238238jdsnfsj23",
+      "email": "foo@bar.com",
+      "firstName": "John",
+      "lastName": "Heimer",
+      "address": "123 Street Blvd",
+      "entryDate": "2014-05-07T17:30:20+00:00"
+    },
+    {
+      "_id": "jkj238238jdsnfsj23",
+      "email": "foo@bar.com",
+      "firstName": "John",
+      "lastName": "Marky Mark",
+      "address": "123 Street Ave",
+      "entryDate": "2014-05-07T17:30:20+00:00"
+    },
+    {
+      "_id": "jkj238238jdsnfsj23",
+      "email": "foo@bar.com",
+      "firstName": "John",
+      "lastName": "Smith",
+      "address": "1234 Street St",
+      "entryDate": "2014-05-07T17:30:20+00:00"
+    }
+  ]
+}

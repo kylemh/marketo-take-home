@@ -1,11 +1,11 @@
 import { leads } from '../../../../inputs/leads.json';
 import { leads as allDupeLeads } from '../../../../inputs/all_dupes_same_entry.json';
-import sortLeadsByEntryDate from '../sortLeadsByEntryDate';
+import getSortedLeads from '../getSortedLeads';
 
-describe('sortLeadsByEntryDate', () => {
+describe('getSortedLeads', () => {
   it('should sort as expected with differing leads', () => {
     const someLeads = leads.slice(0, 3);
-    const result = sortLeadsByEntryDate(someLeads);
+    const result = getSortedLeads(someLeads);
 
     expect(result).toStrictEqual([
       {
@@ -37,7 +37,7 @@ describe('sortLeadsByEntryDate', () => {
 
   it('should not change an array of entirely dupes with the same entryDate', () => {
     const someLeads = allDupeLeads.slice(0, 3);
-    const result = sortLeadsByEntryDate(someLeads);
+    const result = getSortedLeads(someLeads);
 
     expect(result).toStrictEqual(someLeads);
   });

@@ -1,4 +1,4 @@
-import sortLeadsByEntryDate from './sortLeadsByEntryDate';
+import getSortedLeads from './getSortedLeads';
 
 /**
  * @description Takes a list of leads and returns the list of deduped and removed leads
@@ -7,7 +7,7 @@ import sortLeadsByEntryDate from './sortLeadsByEntryDate';
  * @returns {{ dedupedLeads: [Object.<string, any>], removedLeads: [Object.<string, any>] }}
  */
 function dedupeLeads(leads) {
-  const sortedLeads = sortLeadsByEntryDate(leads);
+  const sortedLeads = getSortedLeads(leads);
 
   // Keep track of removed lead index positions for logging purposes
   const dupeLeadIndeces = new Set();

@@ -1,5 +1,5 @@
-import { leads } from '../../inputs/leads.json';
-import { leads as allDupeLeads } from '../../inputs/all_dupes_same_entry.json';
+import { leads } from '../../../inputs/leads.json';
+import { leads as allDupeLeads } from '../../../inputs/all_dupes_same_entry.json';
 import sortLeadsByEntryDate from '../sortLeadsByEntryDate';
 
 describe('sortLeadsByEntryDate', () => {

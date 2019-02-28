@@ -1,6 +1,6 @@
-import { leads } from '../../inputs/leads.json';
-import { leads as allDupeLeads } from '../../inputs/all_dupes_same_entry.json';
-import { leads as allUniqueLeads } from '../../inputs/all_unique.json';
+import { leads } from '../../../inputs/leads.json';
+import { leads as allDupeLeads } from '../../../inputs/all_dupes_same_entry.json';
+import { leads as allUniqueLeads } from '../../../inputs/all_unique.json';
 import dedupeLeads from '../dedupeLeads';
 
 describe('dedupeLeads', () => {

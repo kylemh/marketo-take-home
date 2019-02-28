@@ -51,6 +51,12 @@ class App extends Component {
     }
   };
 
+  updateInputValue = (ev) => {
+    const inputValue = ev.target.value;
+
+    this.setState({ inputValue });
+  };
+
   render() {
     const { state } = this;
 
@@ -72,7 +78,8 @@ class App extends Component {
             <textarea
               cols="50"
               rows="20"
-              onChange={this.formatJSON}
+              onBlur={this.formatJSON}
+              onChange={this.updateInputValue}
               value={state.inputValue}
               name="input"
             />
@@ -88,7 +95,7 @@ class App extends Component {
         <section className="logArea">
           {state.removedLeads.length > 0 && <p>Removed:</p>}
 
-          {/* Key as index here is fine since nodes wont be re-ordered */}
+          {/* Key as index here isn't necessary, but it's in here to prevent a lint warning 🤷‍♂️ */}
           {state.removedLeads.map((removedLead, index) => (
             <pre key={index}>{JSON.stringify(removedLead, undefined, 2)}</pre>
           ))}

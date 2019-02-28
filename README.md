@@ -4,6 +4,8 @@
 
 Simply go to https://marketo-kylemh.netlify.com and follow instructions there!
 
+The website is just there for easy playgrounding, but you can find most of the relevant work being handled within `src/utils`.
+
 ## Instructions
 
 Take a variable number of identically structured json records and de-duplicate the set.

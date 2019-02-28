@@ -25,16 +25,12 @@ class App extends Component {
           errorMessage: '',
           removedLeads,
         });
-      } else {
-        throw new Error('"leads" key not found!');
       }
-    } catch (error) {
+    } catch {
       this.setState({
         errorMessage:
           'The input must be valid JSON and include a key "leads" with an array as a value.',
       });
-
-      console.error(error);
     }
   };
 
@@ -73,13 +69,19 @@ class App extends Component {
 
           <section className="textAreaContainer">
             <label>Input:</label>
-            <textarea cols="50" rows="20" onChange={this.formatJSON} value={state.inputValue} />
+            <textarea
+              cols="50"
+              rows="20"
+              onChange={this.formatJSON}
+              value={state.inputValue}
+              name="input"
+            />
             <p className="errorBox">{state.errorMessage}</p>
           </section>
 
           <section className="textAreaContainer">
             <label>Output:</label>
-            <textarea cols="50" rows="20" readOnly value={state.outputValue} />
+            <textarea cols="50" rows="20" readOnly value={state.outputValue} name="output" />
           </section>
         </form>
 

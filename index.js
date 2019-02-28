@@ -1,11 +1,7 @@
 import fs from 'fs';
-import pick from 'lodash/pick';
 import { leads } from './inputs/leads.json';
 import addLead from './utils/addLead';
 import sortLeadsByEntryDate from './utils/sortLeadsByEntryDate';
-
-// Keep track of removed lead index positions for logging purposes
-const dupeLeadIndeces = new Set();
 
 // Want to keep track of initial entry order before sorting for entryDate to keep track of removed leads
 const leadsWithIndexAsProperty = leads.map((lead, index) => {
@@ -14,8 +10,13 @@ const leadsWithIndexAsProperty = leads.map((lead, index) => {
 
 const sortedLeads = sortLeadsByEntryDate(leadsWithIndexAsProperty);
 
+// Keep track of removed lead index positions for logging purposes
+const dupeLeadIndeces = new Set();
+
+// Keep track of seen emails and IDs to prevent adding dupes
 const seenSet = new Set();
 
+// The final product
 const dedupedLeads = [];
 
 sortedLeads.forEach((lead) => {
@@ -26,15 +27,23 @@ sortedLeads.forEach((lead) => {
 
   if (hasSeenEmail || hasSeenId) {
     dupeLeadIndeces.add(lead.index);
-    delete lead.index;
-    return;
   } else {
-    delete lead.index;
     addLead(lead, dedupedLeads, seenSet);
-    return;
   }
 });
 
-const jsonDedupedLeads = JSON.stringify({ leads: dedupedLeads }, null, 2).concat('\n');
+// Deduped Leads Output
+const dedupedLeadsJSON = JSON.stringify({ leads: dedupedLeads }, null, 2);
+fs.writeFileSync(`./outputs/deduped_leads.json`, dedupedLeadsJSON);
 
-fs.writeFileSync(`./outputs/deduped_leads.json`, jsonDedupedLeads);
+// Loggin Output
+const removedLeadIndeces = Array.from(dupeLeadIndeces).sort();
+const removedLeads = removedLeadIndeces.map((index) => leads[index]);
+const now = new Date().getTime();
+fs.writeFileSync(
+  `./outputs/logs/deduped_leads@${now}.txt`,
+  `Removed Leads:\n${removedLeads.map((lead) =>
+    JSON.stringify(lead, null, 2),
+  )}\n\nDeduped Leads:\n${dedupedLeads.map((lead) => JSON.stringify(lead, null, 2))}\n
+`,
+);

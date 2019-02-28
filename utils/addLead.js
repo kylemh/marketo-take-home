@@ -9,6 +9,7 @@
  * They're the keys and the value is their index in the relevantLeads list
  */
 function addLead(lead, relevantLeads, seenSet) {
+  delete lead.index;
   seenSet.add(lead.email);
   seenSet.add(lead._id);
 

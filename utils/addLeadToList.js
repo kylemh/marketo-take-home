@@ -1,5 +1,5 @@
 /**
- * @function addLead
+ * @function addLeadToList
  * @description Adds a lead to the end of a list of leads. Also adds lead's ID and Email to a Set of
  * seen IDs and Emails.
  *
@@ -8,7 +8,7 @@
  * @param {Set.<string, number>} seenSet The Set of seen ids and emails.
  * They're the keys and the value is their index in the relevantLeads list
  */
-function addLead(lead, relevantLeads, seenSet) {
+function addLeadToList(lead, relevantLeads, seenSet) {
   delete lead.index;
   seenSet.add(lead.email);
   seenSet.add(lead._id);
@@ -16,4 +16,4 @@ function addLead(lead, relevantLeads, seenSet) {
   relevantLeads.push(lead);
 }
 
-export default addLead;
+export default addLeadToList;

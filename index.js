@@ -1,6 +1,6 @@
 import fs from 'fs';
 import { leads } from './inputs/leads.json';
-import addLead from './utils/addLead';
+import addLeadToList from './utils/addLeadToList';
 import sortLeadsByEntryDate from './utils/sortLeadsByEntryDate';
 
 // Want to keep track of initial entry order before sorting for entryDate to keep track of removed leads
@@ -28,7 +28,7 @@ sortedLeads.forEach((lead) => {
   if (hasSeenEmail || hasSeenId) {
     dupeLeadIndeces.add(lead.index);
   } else {
-    addLead(lead, dedupedLeads, seenSet);
+    addLeadToList(lead, dedupedLeads, seenSet);
   }
 });
 

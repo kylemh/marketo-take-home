@@ -1,5 +1,12 @@
 # Marketo Take Home
 
+## Usage
+
+- Clone repository
+- `yarn`
+- `yarn start`
+- See output folder for generated JSON and logging files
+
 ## Instructions
 
 Take a variable number of identically structured json records and de-duplicate the set.

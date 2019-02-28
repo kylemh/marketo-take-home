@@ -6,9 +6,10 @@
   "scripts": {
     "build": "parcel build index.js --target node --no-source-maps",
     "precise-commits": "precise-commits",
-    "precommit": "npm run precise-commits",
+    "precommit": "yarn precise-commits && yarn test",
     "start": "yarn build && node ./dist/index.js",
-    "test": "jest"
+    "test": "jest",
+    "test:watch": "jest --watch"
   },
   "repository": {
     "type": "git",

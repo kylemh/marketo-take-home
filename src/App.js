@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import dedupeLeads from './utils/dedupeLeads';
+import dedupeLeads from './utils/leadListManipulation/dedupeLeads';
 import './App.css';
 
 class App extends Component {

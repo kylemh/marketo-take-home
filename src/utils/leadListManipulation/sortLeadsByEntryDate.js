@@ -6,7 +6,7 @@
  * @returns {[Object.<string, any>]} sorted leads
  */
 function sortLeadsByEntryDate(leads) {
-  return leads.sort((a, b) => new Date(b.entryDate) - new Date(a.entryDate));
+  return [...leads].sort((a, b) => new Date(b.entryDate) - new Date(a.entryDate));
 }
 
 export default sortLeadsByEntryDate;

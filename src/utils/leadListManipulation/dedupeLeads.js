@@ -1,4 +1,3 @@
-import addLeadToList from './addLeadToList';
 import sortLeadsByEntryDate from './sortLeadsByEntryDate';
 
 /**
@@ -8,12 +7,7 @@ import sortLeadsByEntryDate from './sortLeadsByEntryDate';
  * @returns {{ dedupedLeads: [Object.<string, any>], removedLeads: [Object.<string, any>] }}
  */
 function dedupeLeads(leads) {
-  // Want to keep track of initial entry order before sorting for entryDate to keep track of removed leads
-  const leadsWithIndexAsProperty = leads.map((lead, index) => {
-    return { ...lead, index };
-  });
-
-  const sortedLeads = sortLeadsByEntryDate(leadsWithIndexAsProperty);
+  const sortedLeads = sortLeadsByEntryDate(leads);
 
   // Keep track of removed lead index positions for logging purposes
   const dupeLeadIndeces = new Set();
@@ -25,16 +19,22 @@ function dedupeLeads(leads) {
   const dedupedLeads = [];
 
   // Add leads to deduped list if its email or ID have never been seen before
-  sortedLeads.forEach((lead) => {
-    const { email, _id } = lead;
+  sortedLeads.forEach((curLead) => {
+    const { email, _id } = curLead;
 
     const hasSeenEmail = seenSet.has(email);
     const hasSeenId = seenSet.has(_id);
 
     if (hasSeenEmail || hasSeenId) {
-      dupeLeadIndeces.add(lead.index);
+      const originalInsertionIndexOfDupe = leads.findIndex((lead) => {
+        return lead === curLead;
+      });
+      dupeLeadIndeces.add(originalInsertionIndexOfDupe);
     } else {
-      addLeadToList(lead, dedupedLeads, seenSet);
+      seenSet.add(curLead.email);
+      seenSet.add(curLead._id);
+
+      dedupedLeads.push(curLead);
     }
   });
 

@@ -2,12 +2,6 @@
   "name": "marketo-take-home",
   "version": "1.0.0",
   "private": true,
-  "dependencies": {
-    "lodash": "^4.17.11",
-    "react": "^16.8.3",
-    "react-dom": "^16.8.3",
-    "react-scripts": "2.1.5"
-  },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
@@ -26,6 +20,12 @@
     "not ie <= 11",
     "not op_mini all"
   ],
+  "dependencies": {
+    "lodash": "^4.17.11",
+    "react": "^16.8.3",
+    "react-dom": "^16.8.3",
+    "react-scripts": "2.1.5"
+  },
   "devDependencies": {
     "husky": "^1.3.1",
     "precise-commits": "^1.0.2",

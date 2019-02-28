@@ -22,11 +22,6 @@ describe('App', () => {
     ReactDOM.unmountComponentAtNode(div);
   });
 
-  it('should match snapshot', () => {
-    const wrapper = mount(<App />);
-    expect(wrapper).toMatchSnapshot();
-  });
-
   it('should change the error message if input is empty and dedupe button is clicked', () => {
     const wrapper = mount(<App />);
 

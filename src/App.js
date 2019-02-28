@@ -87,8 +87,10 @@ class App extends Component {
 
         <section className="logArea">
           {state.removedLeads.length > 0 && <p>Removed:</p>}
-          {state.removedLeads.map((removedLead) => (
-            <pre>{JSON.stringify(removedLead, undefined, 2)}</pre>
+
+          {/* Key as index here is fine since nodes wont be re-ordered */}
+          {state.removedLeads.map((removedLead, index) => (
+            <pre key={index}>{JSON.stringify(removedLead, undefined, 2)}</pre>
           ))}
         </section>
       </main>

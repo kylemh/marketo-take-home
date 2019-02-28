@@ -2,10 +2,7 @@
 
 ## Usage
 
-- Clone repository
-- `yarn`
-- `yarn start`
-- See output folder for generated JSON and logging files
+Simply go to https://marketo-kylemh.netlify.com and follow instructions there!
 
 ## Instructions
 
